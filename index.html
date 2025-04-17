@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>EuroMillions</title>
+</head>
+
+<body>
+    <main class="contenu">
+        <h1>EuroMillions</h1>
+        <button class="tirage">Tirage des numéros</button>
+            <div class="uniqueNumbers">
+            <div class="newNumber">
+                <p class="rond-text"></p>
+            </div>
+
+            <div class="newNumber">
+                <p class="rond-text"></p>
+            </div>
+
+            <div class="newNumber">
+                <p class="rond-text"></p>
+            </div>
+
+            <div class="newNumber">
+                <p class="rond-text"></p>
+            </div>
+
+            <div class="newNumber">
+                <p class="rond-text"></p>
+            </div>
+
+            <div class="newNumber2">
+                <div class="étoiles">
+                <p class="étoile-text"></p>
+            </div>
+
+            <div class="newNumber2">
+                <div class="étoiles">
+                <p class="étoile-text"></p>
+            </div>
+        </main>
+        <footer>
+        <p>
+            @Copyright
+        </p>
+        </footer>
+    <script>
+
+        function genererNombres(nbNombres, nbMax) {
+            const uniqueNumbers = [];
+            while (uniqueNumbers.length < nbNombres) {
+                let newNumber = Math.ceil(Math.random() * nbMax);
+                if (uniqueNumbers.indexOf(newNumber) == -1) {
+                    uniqueNumbers.push(newNumber);
+                }
+            }
+            console.log(uniqueNumbers);
+            return uniqueNumbers;
+        }
+
+
+
+        const button = document.querySelector(".tirage");
+        button.addEventListener("click", () => {
+
+            const nombresStandard = genererNombres(5, 50);
+
+            const nombresEtoiles = genererNombres(2, 12);
+
+            const numeros = document.querySelectorAll(".rond-text");
+
+            for (let i = 0; i < numeros.length; i++) {
+                numeros[i].textContent = nombresStandard[i];
+                console.dir(numeros[i])
+            }
+
+            const numerosTwo = document.querySelectorAll(".étoile-text");
+
+            for (let i = 0; i < numerosTwo.length; i++) {
+                numerosTwo[i].textContent = nombresEtoiles[i];
+                console.dir(numerosTwo[i])  
+            }           
+        });
+    </script>
+
+</body>
+
+</html>
